@@ -30,9 +30,10 @@ public:
 	ADO();
 	ADO(string table);
 	bool openTable(string table);
-	ResultSet select(string column, string value);
+	ResultSet selectByColumn(string column, string value);
 	bool insert(Record r);
 	bool update(Record r1, Record r2);
+	bool delByColumn(string column, string value);
 };
 
 #endif

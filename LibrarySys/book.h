@@ -3,6 +3,7 @@
 #define H_BOOK_INC
 
 #include "stdafx.h"
+#include "ADO.h"
 
 class Book {
 private:
@@ -14,6 +15,7 @@ private:
 	vector<string> v_ISBN;
 	vector<string> v_author;
 	vector<bool> v_isAvailable;
+	ADO *ado;
 public:
 	Book();
 	Book(const Book& b);
@@ -24,11 +26,19 @@ public:
 	void findAll();
 	void findByName(string name);
 	void findByAuthor(string author);
-	void findByISBN(string ISBN);
+	Record& findByISBN(string ISBN);
 	string getName();
 	string getAuthor();
 	string getISBN();
 	bool getIsAvailable();
+};
+
+class ex:public exception {
+private:
+	char* w;
+public:
+	ex(char *w);
+	const char* what();
 };
 
 #endif
