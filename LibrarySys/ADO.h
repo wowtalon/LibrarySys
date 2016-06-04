@@ -4,34 +4,35 @@
 
 #include "stdafx.h"
 
-struct ResultSet {
+struct Record {
 	map<string, string> columns;
+};
+
+struct ResultSet {
+	vector<Record> record;
 };
 
 class ADO {
 private:
-	string location;
+
+	string table;
+
 	vector<string> line;
 
 	// 记录表格的表头
 	vector<string> header;
 
 	ResultSet ret;
+
+	ifstream in;
+	ofstream out;
 public:
 	ADO();
-
-	// 初始化ADO文件所在位置
-	ADO(string location);
-
-	// 读取文件
-	ResultSet select(string sql);
-
-	// 写文件
-	bool insert(string sql);
-
-	// 修改文件
-	bool update(string sql);
-
+	ADO(string table);
+	bool openTable(string table);
+	ResultSet select(string column, string value);
+	bool insert(Record r);
+	bool update(Record r1, Record r2);
 };
 
 #endif

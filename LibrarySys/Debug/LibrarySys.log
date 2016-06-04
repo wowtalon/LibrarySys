@@ -1,0 +1,26 @@
+﻿生成启动时间为 2016-06-04 20:18:06。
+     1>项目“E:\Desktop\WuSui\Project\LibrarySys\LibrarySys\LibrarySys.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\LibrarySys.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         D:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\LibrarySys.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt book.cpp LibrarySys.cpp test.cpp ADO.cpp user.cpp
+         user.cpp
+     1>e:\desktop\wusui\project\librarysys\librarysys\user.cpp(1): warning C4627: “#include "user.h"”:  在查找预编译头使用时跳过
+                 将指令添加到“stdafx.h”或重新生成预编译头
+     1>e:\desktop\wusui\project\librarysys\librarysys\user.cpp(52): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "stdafx.h"”?
+         ADO.cpp
+     1>e:\desktop\wusui\project\librarysys\librarysys\ado.cpp(1): warning C4627: “#include "ADO.h"”:  在查找预编译头使用时跳过
+                 将指令添加到“stdafx.h”或重新生成预编译头
+     1>e:\desktop\wusui\project\librarysys\librarysys\ado.cpp(17): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "stdafx.h"”?
+         test.cpp
+         LibrarySys.cpp
+         book.cpp
+     1>e:\desktop\wusui\project\librarysys\librarysys\book.cpp(1): warning C4627: “#include "book.h"”:  在查找预编译头使用时跳过
+                 将指令添加到“stdafx.h”或重新生成预编译头
+     1>e:\desktop\wusui\project\librarysys\librarysys\book.cpp(62): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "stdafx.h"”?
+         正在生成代码...
+     1>已完成生成项目“E:\Desktop\WuSui\Project\LibrarySys\LibrarySys\LibrarySys.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:04.39
