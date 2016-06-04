@@ -24,8 +24,8 @@ Book::Book(string name, string author, string ISBN, bool b) {
 
 bool Book::insert() {
 	Record r;
-	if (this->name != "") {
-		if (this->findByISBN(this->ISBN).columns.empty) {
+	if (this->ISBN != "") {
+		if (this->findByISBN(this->ISBN).record.empty()) {
 			r.columns["name"] = this->name;
 			r.columns["author"] = this->author;
 			r.columns["ISBN"] = this->ISBN;
@@ -33,11 +33,11 @@ bool Book::insert() {
 			ado->insert(r);
 		}
 		else {
-			throw "ISBN existed!";
+			cout << "ISBN existed!" << endl;
 		}
 	}
 	else {
-		throw "Invailable value!";
+		cout << "Invailable value!" << endl;
 	}
 }
 
@@ -45,32 +45,56 @@ bool Book::deleteByISBN(string ISBN) {
 	return ado->delByColumn("ISBN", ISBN);
 }
 
-bool Book::borrow(string ISBN) {
-	if (this->findByISBN(ISBN).columns.size > 0) {
-		if (this->findByISBN(ISBN).columns["isAvailable"] == "y") {
-			this->findByISBN(ISBN).columns["isAvailable"] = "n";
-			return true;
+bool Book::borrow(string ISBN, string username) {
+	ResultSet ret = this->findByISBN(ISBN);
+	if (!ret.record.empty()) {
+		Record r = ret.record[0];
+		if (r.columns["isAvailable"] == "*") {
+			Record r1;
+			r1 = r;
+			r1.columns["isAvailable"] = username;
+			return ado->update(r, r1);
+		}
+		else {
+			cout << "Invalid book." << endl;
+			return false;
+		}
+	}
+	else {
+		cout << "This book is not exist." << endl;
+		return false;
+	}
+}
+
+bool Book::re(string ISBN, string username) {
+	ResultSet ret = this->findByISBN(ISBN);
+	if (ret.record.empty()) {
+		return false;
+	}
+	else {
+		Record r = ret.record[0];
+		if (r.columns["isVailable"] == username) {
+			Record r1 = r;
+			r1.columns["isVailable"] = "*";
+			return ado->update(r, r1);
 		}
 		else {
 			return false;
 		}
 	}
-	else {
-		return false;
-	}
 }
 
-void Book::findAll() {
-
+ResultSet Book::findAll() {
+	return ado->selectByColumn("*", "*");
 }
-void Book::findByName(string name) {
-
+ResultSet Book::findByName(string name) {
+	return ado->selectByColumn("name", name);
 }
-void Book::findByAuthor(string author) {
-
+ResultSet Book::findByAuthor(string author) {
+	return ado->selectByColumn("author", author);
 }
-Record& Book::findByISBN(string ISBN) {
-
+ResultSet Book::findByISBN(string ISBN) {
+	return ado->selectByColumn("ISBN", ISBN);
 }
 
 string Book::getName() {
@@ -87,11 +111,4 @@ string Book::getISBN() {
 
 bool Book::getIsAvailable() {
 	return this->isAvailable;
-}
-
-ex::ex(char *w) {
-
-}
-const char* what() {
-
 }

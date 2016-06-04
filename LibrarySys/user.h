@@ -4,14 +4,17 @@
 
 #include "stdafx.h"
 #include "ADO.h"
+#include "book.h"
 
 class User {
+protected:
+	ADO* ado;
 private:
-	ADO ado;
 	string username;
 	string password;
 	string name;
 	string type;
+	bool isLogon;
 public:
 	User();
 	User(string username, string password, string name);
@@ -20,6 +23,7 @@ public:
 	bool editName(string name);
 	bool login();
 	void setType(string type);
+	string getUsername();
 };
 
 class Admin :public User {
